@@ -1,0 +1,113 @@
+<div class="page login-screen-page">
+    <div class="logo-creceidea">
+        <img src="/images/logo-creceidea.svg" alt="" style="filter: brightness(2);">
+    </div>
+    <div class="page-content">
+        
+        <div class="row">
+            <span></span>
+            <div class="col-100 xsmall-25">
+                <div class="card">
+                    <div class="card-content card-content-padding">
+                        <h2>Iniciar Sesión</h2>
+                        <form id="loginForm">
+                            <div class="list list-strong-ios list-dividers-ios inset-ios">
+                                <ul>
+                                    <li class="item-content item-input item-input-outline">
+                                        <div class="item-media">
+                                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M13.125 5C13.125 6.72589 11.7259 8.125 10 8.125C8.27414 8.125 6.87503 6.72589 6.87503 5C6.87503 3.27411 8.27414 1.875 10 1.875C11.7259 1.875 13.125 3.27411 13.125 5Z"
+                                                    stroke="#9EA5AD" stroke-width="1.5" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path
+                                                    d="M3.75098 16.7652C3.80956 13.3641 6.58492 10.625 10 10.625C13.4152 10.625 16.1906 13.3642 16.2491 16.7654C14.3468 17.6383 12.2304 18.125 10.0003 18.125C7.77003 18.125 5.65344 17.6383 3.75098 16.7652Z"
+                                                    stroke="#9EA5AD" stroke-width="1.5" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </svg>
+                                        </div>
+                                        <div class="item-inner">
+
+                                            <div class="item-input-wrap">
+                                                <input type="text" placeholder="Email" class="" id="email" name="email"
+                                                    required>
+                                                <span class="input-clear-button"></span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="item-content item-input item-input-outline">
+                                        <div class="item-media">
+                                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M13.125 4.375C14.5057 4.375 15.625 5.49429 15.625 6.875M18.125 6.875C18.125 9.63642 15.8864 11.875 13.125 11.875C12.8327 11.875 12.5463 11.8499 12.2677 11.8018C11.7986 11.7207 11.3017 11.8233 10.965 12.16L8.75 14.375H6.875V16.25H5V18.125H1.875V15.7767C1.875 15.2794 2.07254 14.8025 2.42417 14.4508L7.84 9.035C8.17668 8.69832 8.27927 8.20144 8.1982 7.73225C8.15008 7.45372 8.125 7.16729 8.125 6.875C8.125 4.11358 10.3636 1.875 13.125 1.875C15.8864 1.875 18.125 4.11358 18.125 6.875Z"
+                                                    stroke="#9EA5AD" stroke-width="1.5" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </svg>
+
+                                        </div>
+                                        <div class="item-inner">
+
+                                            <div class="item-input-wrap">
+                                                <input type="password" placeholder="************" class="" id="password"
+                                                    name="password" required>
+                                                <span class="input-clear-button"></span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="list inset">
+                                <ul>
+                                    <li class="">
+                                        <button type="submit"
+                                            class="button button-large button-primary button-round button-fill">Ingresar</button>
+
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </form>
+                        <div id="error-message" style="color: red;"></div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<%- include('./style') %>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', async function (event) {
+            event.preventDefault();
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            try {
+                const response = await fetch('/login-auth', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email, password })
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    window.location.href = '/dashboard';
+                } else {
+                    document.getElementById('error-message').textContent = result.message || 'Invalid credentials';
+                }
+            } catch (error) {
+                document.getElementById('error-message').textContent = 'Error during login';
+            }
+        });
+    </script>

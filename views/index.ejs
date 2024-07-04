@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en"
+    class="example-preview ios ios-translucent-bars ios-translucent-modals device-pixel-ratio-2 device-desktop device-macos ">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover">
+    <title>Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+    <link href="/css/framework7-bundle.min.css" rel="stylesheet">
+    <link href="/css/app.css" rel="stylesheet">
+
+</head>
+
+<body class="bg-gray-100 flex items-center justify-center h-screen">
+    <div id="app">
+
+        <div class="view view-main">
+         
+            <%- include(module+'/'+page) %>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="/js/framework7-bundle.min.js"></script>
+    <script>
+        var app = new Framework7({
+            el: '#app',
+            name: 'My App',
+            panel: {
+                swipe: true,
+            }
+        });
+
+    </script>
+    <script src="/js/app.js" type="module"></script>
+
+
+
+</body>
+
+</html>

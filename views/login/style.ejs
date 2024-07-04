@@ -1,0 +1,83 @@
+<style>
+    :root {
+        --f7-input-outline-border-radius: 8px;
+        --f7-input-outline-border-color: #ccc;
+        --f7-color-primary: #F87D26;
+        --f7-theme-color: #F87D26;
+        --f7-ios-primary: #F87D26;
+        --f7-button-bg-color: #F87D26;
+    }
+
+    .login-screen-page {
+        background-image: url('https://wallpaperboat.com/wp-content/uploads/2020/04/peru-wallpaper-download.jpg');
+        background-size: cover;
+        background-position: center top;
+        position: relative;
+    }
+
+    .login-screen-page .page-content {
+        position: relative;
+        z-index: 999;
+    }
+
+    .login-screen-page::before {
+
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: #001c3161;
+        z-index: 5;
+    }
+
+    .login-screen-page .card {
+        border: 1px solid;
+        border-image-source: linear-gradient(180deg, #FFFFFF 12.47%, #454C52 77.47%);
+        background: linear-gradient(170.9deg, rgba(246, 247, 249, 0.8) 17.14%, rgba(246, 247, 249, 0.6) 100.03%);
+        backdrop-filter: blur(5px);
+    }
+
+    .input-outline::after,
+    .item-input-outline .item-content::after,
+    .item-input-outline.item-content::after {
+        background-color: #FFFFFF;
+        border: 1px solid var(--f7-input-outline-border-color);
+        border-radius: var(--f7-input-outline-border-radius);
+        pointer-events: none;
+        box-sizing: border-box;
+        transition-duration: .2s;
+        box-shadow: 0px 0px 0px 1px #676E7629;
+        height: 35px;
+        top: auto;
+        bottom: auto;
+    }
+
+    .md .input-outline .item-inner,
+    .md .item-input-outline .item-content .item-inner,
+    .md .item-input-outline.item-content .item-inner {
+        padding-top: 1px;
+        padding-bottom: 1px;
+        z-index: 1;
+    }
+
+    .list .item-media {
+        z-index: 1;
+    }
+
+    .button-primary {
+        width: 250px;
+        height: 35px;
+        padding: 12px 20px 12px 20px;
+        gap: 8px;
+        border-radius: 30px;
+        margin: auto;
+    }
+
+    .logo-creceidea {
+        width: 200px;
+        position: absolute;
+        top: 40px;
+        left: 40px;
+        z-index: 99;
+    }
+</style>
